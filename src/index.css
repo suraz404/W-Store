@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* clerk bata user le sign in garepaxi ko  */
+.cl-avatarBox {
+  width: 2rem;
+  height: 2rem;
+}
