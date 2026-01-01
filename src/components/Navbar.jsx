@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { Divide, MapPin } from "lucide-react";
 import { FaCaretDown } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
@@ -8,9 +8,10 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
+import { useState } from "react";
 
-const Navbar = () => {
-  const location = false;
+const Navbar = ({ location }) => {
+  const [openDropdown, setopencDropdown] = useState(false);
   return (
     <div className="bg-white py-3 shadow-2xl">
       <div className=" max-w-6xl mx-auto flex items-center justify-between ">
@@ -19,9 +20,19 @@ const Navbar = () => {
           <h1 className=" text-3xl font-medium font-serif">W-Store</h1>
           <div className="flex gap-1 items-center text-gray-500 text-sm">
             <MapPin className="text-black text-sm" />
-            <span>{location ? <div></div> : "Add Address"}</span>
+            <span>
+              {location ? (
+                <div className="-space-y-1.5">
+                  <p>{location.county}</p>
+                  <p>{location.state}</p>
+                </div>
+              ) : (
+                "Add Address"
+              )}
+            </span>
             <FaCaretDown />
           </div>
+          {openDropdown ? <div> </div> : null}
         </div>
         {/* menu section */}
         <nav className="flex gap-6 items-center">
@@ -82,7 +93,7 @@ const Navbar = () => {
             </span>
           </Link>
           <SignedOut>
-            <SignInButton className=" text-[14px] border-2 rounded-md px-1 cursor-pointer hover:bg-black hover:text-white font-light" />
+            <SignInButton className=" text-[14px] border-2 rounded-md px-1 cursor-pointer hover:bg-black hover:text-white font-light transition-all" />
           </SignedOut>
           <SignedIn>
             <UserButton />
