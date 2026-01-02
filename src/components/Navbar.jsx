@@ -8,10 +8,13 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import { useState } from "react";
 
-const Navbar = ({ location }) => {
-  const [openDropdown, setopencDropdown] = useState(false);
+import { CgClose } from "react-icons/cg";
+
+const Navbar = ({ location, getlocation, openDropdown, setopenDropdown }) => {
+  const handleopenDropdown = () => {
+    setopenDropdown(!openDropdown);
+  };
   return (
     <div className="bg-white py-3 shadow-2xl">
       <div className=" max-w-6xl mx-auto flex items-center justify-between ">
@@ -30,9 +33,24 @@ const Navbar = ({ location }) => {
                 "Add Address"
               )}
             </span>
-            <FaCaretDown />
+            <FaCaretDown onClick={handleopenDropdown} />
           </div>
-          {openDropdown ? <div> </div> : null}
+          {openDropdown ? (
+            <div className="w-62.5 h-max fixed shadow-2xl rounded-md top-16 left-60 z-50 bg-white border-2 p-5 border-gray-100 ">
+              <h1 className="font-semibold text-xl mb-4 flex justify-between">
+                Change Address
+                <span>
+                  <CgClose onClick={handleopenDropdown} />
+                </span>{" "}
+              </h1>
+              <button
+                className="px-3 border-2 border-gray-500 rounded-md hover:bg-black hover:text-white"
+                onClick={getlocation}
+              >
+                Detect My Location
+              </button>
+            </div>
+          ) : null}
         </div>
         {/* menu section */}
         <nav className="flex gap-6 items-center">

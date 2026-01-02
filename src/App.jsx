@@ -11,6 +11,7 @@ import axios from "axios";
 
 const App = () => {
   const [location, setLocation] = useState("");
+  const [openDropdown, setopenDropdown] = useState(false);
   //  get location function
 
   const getlocation = async () => {
@@ -22,7 +23,7 @@ const App = () => {
         const location = await axios.get(url);
         const exactLocation = location.data.address;
         setLocation(exactLocation);
-        console.log(exactLocation);
+        setopenDropdown(false);
       } catch (error) {
         console.log(error);
       }
@@ -34,7 +35,13 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar location={location} />
+      <Navbar
+        location={location}
+        getlocation={getlocation}
+        openDropdown={openDropdown}
+        setopenDropdown={setopenDropdown}
+      />
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
