@@ -8,7 +8,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const res = await axios.get("https://fakestoreapi.com/products");
+        const res = await axios.get("https://api.escuelajs.co/api/v1/products");
         setData(res.data);
       } catch (error) {
         console.log(error);

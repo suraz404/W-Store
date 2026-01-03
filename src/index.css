@@ -5,3 +5,10 @@
   width: 2rem;
   height: 2rem;
 }
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex;
+}
