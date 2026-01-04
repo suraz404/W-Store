@@ -12,3 +12,9 @@
 .slick-track {
   display: flex;
 }
+input {
+  background-color: white;
+  accent-color: black;
+  border: 1px solid #ccc;
+  color: #333;
+}
