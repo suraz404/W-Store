@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 p-5 flex flex-col gap-1">
+    <div className="w-70 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 p-5 flex flex-col h-100 gap-1">
       {/* Image */}
       <img
         src={product.images[0]}
@@ -12,9 +12,9 @@ const ProductCard = ({ product }) => {
       />
 
       {/* Product Name */}
-      <h3 className="text-md line-clamp-2  font-medium text-gray-900 mb-1">
+      <h2 className="text-md line-clamp-2  font-medium text-gray-900 mb-1">
         {product.title}
-      </h3>
+      </h2>
 
       {/* Price */}
       <p className="text-base font-semibold text-gray-900 mb-2">

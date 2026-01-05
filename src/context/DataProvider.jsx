@@ -2,32 +2,24 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { DataContext } from "./DataContext";
 
-const ALLOWED_CATEGORIES = [
-  "Clothes",
-  "Electronics",
-  "Furniture",
-  "Shoes",
-  "Miscellaneous",
-];
-
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
+  console.log(data);
 
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const res = await axios.get("https://api.escuelajs.co/api/v1/products");
+        const res = await axios.get("https://dummyjson.com/products");
 
-        const filteredProducts = res.data.filter((item) =>
-          ALLOWED_CATEGORIES.includes(item.category?.name)
-        );
+        const products = res.data.products;
 
-        setData(filteredProducts);
+        setData(products);
 
+        // ✅ GET UNIQUE CATEGORIES
         const uniqueCategories = [
-          "All",
-          ...new Set(filteredProducts.map((p) => p.category.name)),
+          "ALL",
+          ...new Set(products.map((item) => item.category.toUpperCase())),
         ];
 
         setCategories(uniqueCategories);

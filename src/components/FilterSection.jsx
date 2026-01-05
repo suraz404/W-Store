@@ -1,16 +1,26 @@
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
-const FilterSection = () => {
+const FilterSection = ({
+  search,
+  setSearch,
+  category,
+  priceRange,
+  setPriceRange,
+  handleCategoryChange,
+  handleResetButton,
+}) => {
   const { categories } = useContext(DataContext);
 
   const uniqueCategories = categories;
   return (
-    <div className="bg-white m-6 p-4 h-max">
+    <div className="bg-white  text-black m-6 p-4 h-max">
       <input
         type="text "
         placeholder="Search..."
         className="p-2 mt-5 border border-gray-400 rounded-md"
+        onChange={(e) => setSearch(e.target.value)}
+        value={search}
       />
       <hr className="mt-6 text-gray-400" />
       <h1 className="  text-md font-semibold mt-4 ">Categories</h1>
@@ -19,19 +29,35 @@ const FilterSection = () => {
         {uniqueCategories.map((item, index) => {
           return (
             <div key={index} className="flex gap-2">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                name={item}
+                checked={item === category}
+                value={item}
+                onChange={handleCategoryChange}
+              />
               <button>{item}</button>
             </div>
           );
         })}
       </div>
+
       <hr className="my-6 text-gray-400" />
+
       <h1 className="  text-md font-semibold mt-4 ">Price Range</h1>
       <div className="flex flex-col gap-2 mt-2">
         <label className="text-sm" htmlFor="">
-          Price:- $0-$50000
+          Price:- ${priceRange[0]}-${priceRange[1]}
         </label>
-        <input type="range" name="" id="" />
+        <input
+          type="range"
+          name=""
+          id=""
+          value={priceRange[1]}
+          onChange={(e) =>
+            setPriceRange([priceRange[0], Number(e.target.value)])
+          }
+        />
       </div>
       <button
         className="
@@ -42,6 +68,7 @@ const FilterSection = () => {
             text-sm font-medium
             transition-all
             hover:bg-black hover:text-white mt-4"
+        onClick={handleResetButton}
       >
         Reset Filters
       </button>
