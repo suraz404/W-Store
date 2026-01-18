@@ -3,7 +3,7 @@ import { useState } from "react";
 const ProductGallery = ({ images, title }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // If there are no images, show a placeholder
+  // If there are no images, show a placeholdesr
   if (!images || images.length === 0)
     return (
       <div className="w-[420px] aspect-square bg-zinc-50 animate-pulse flex items-center justify-center uppercase text-[10px] tracking-widest font-bold">
@@ -13,7 +13,7 @@ const ProductGallery = ({ images, title }) => {
 
   return (
     <div className="flex flex-col-reverse md:flex-row gap-4 md:gap-8 lg:sticky lg:top-24 h-fit">
-      {/* 1. Side Filmstrip (Thumbnails) */}
+      {/*  Thumbnails */}
       <div className="flex md:flex-col gap-3 ">
         {images.map((img, index) => (
           <button
@@ -37,7 +37,7 @@ const ProductGallery = ({ images, title }) => {
         ))}
       </div>
 
-      {/* 2. Main Stage (The Hero Image) */}
+      {/* Main Image*/}
       <div className="relative group bg-[#f6f6f6] w-full md:w-[500px] lg:w-[600px] aspect-square flex items-center justify-center overflow-hidden">
         {/* Subtle Brand Watermark Background */}
         <span className="absolute inset-0 flex items-center justify-center text-[12rem] font-black text-black/2 select-none pointer-events-none uppercase">
@@ -50,8 +50,6 @@ const ProductGallery = ({ images, title }) => {
           alt={title}
           className="w-[85%] h-[85%] object-contain mix-blend-multiply transition-all duration-700 ease-out group-hover:scale-110 animate-in fade-in zoom-in-95"
         />
-
-        {/* Floating Indicator (B&W Style) */}
         <div className="absolute bottom-6 right-6">
           <p className="text-[10px] font-black tracking-widest uppercase bg-white px-3 py-1 shadow-sm border border-black/5">
             {activeIndex + 1} / {images.length}
