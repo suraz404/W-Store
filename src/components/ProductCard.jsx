@@ -1,7 +1,9 @@
 import React from "react";
 import { Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
   return (
     <div className="w-70 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 p-5 flex flex-col h-100 gap-1">
       {/* Image */}
@@ -9,6 +11,7 @@ const ProductCard = ({ product }) => {
         src={product.images[0]}
         alt={product.title}
         className="h-40 object-contain mb-4"
+        onClick={() => navigate(`./${product.id}`)}
       />
 
       {/* Product Name */}
@@ -23,17 +26,23 @@ const ProductCard = ({ product }) => {
 
       {/* Rating */}
       <div className="flex items-center gap-1 mb-4">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={14}
-            className={`${
-              i < Math.round(product.rating?.rate || 0)
-                ? "fill-gray-900 text-gray-900"
-                : "text-gray-300"
-            }`}
-          />
-        ))}
+        {[...Array(5)].map((_, i) => {
+          const full = i + 1 <= Math.floor(product.rating);
+          const half = i + 0.5 === product.rating;
+          return (
+            <Star
+              key={i}
+              size={14}
+              className={`${
+                full
+                  ? "fill-gray-900 text-gray-900"
+                  : half
+                  ? "fill-gray-500 text-gray-500"
+                  : "text-gray-300"
+              }`}
+            />
+          );
+        })}
       </div>
 
       {/* Button */}

@@ -7,26 +7,24 @@ import Pagination from "../components/Pagination";
 const Product = () => {
   const { data } = useContext(DataContext);
 
-  // 🔍 Filter states
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("ALL");
+  const [brand, setBrand] = useState("ALL");
   const [priceRange, setPriceRange] = useState([0, 5000]);
 
-  // 📄 Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  // 🎯 Filtering logic
   const filteredData = data.filter((item) => {
     return (
-      item.title.toLowerCase().includes(search.toLowerCase()) &&
-      (category === "ALL" || item.category.toUpperCase() === category) &&
-      item.price >= priceRange[0] &&
-      item.price <= priceRange[1]
+      item.title?.toLowerCase().includes(search.toLowerCase()) &&
+      (category === "ALL" || item.category?.toUpperCase() === category) &&
+      (brand === "ALL" || item.brand?.toUpperCase() === brand) &&
+      (item.price ?? 0) >= priceRange[0] &&
+      (item.price ?? 0) <= priceRange[1]
     );
   });
 
-  // 📐 Pagination calculation
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const displayPage = currentPage > totalPages ? 1 : currentPage;
 
@@ -35,7 +33,6 @@ const Product = () => {
     displayPage * itemsPerPage
   );
 
-  // 🧠 Handlers
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
   };
@@ -44,6 +41,7 @@ const Product = () => {
     setCategory("ALL");
     setPriceRange([0, 5000]);
     setSearch("");
+    setBrand("ALL");
   };
 
   return (
@@ -61,6 +59,8 @@ const Product = () => {
               setPriceRange={setPriceRange}
               handleCategoryChange={handleCategoryChange}
               handleResetButton={handleResetButton}
+              brand={brand}
+              setBrand={setBrand}
             />
 
             {/* Products + Pagination */}

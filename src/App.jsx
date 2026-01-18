@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import Footer from "./components/Footer";
+import SIngleProduct from "./pages/SIngleProduct";
 
 const App = () => {
   const [location, setLocation] = useState("");
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/products" element={<Product />}></Route>
+        <Route path="/products/:id" element={<SIngleProduct />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
       <Footer />

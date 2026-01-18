@@ -5,24 +5,32 @@ import { DataContext } from "./DataContext";
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
-  console.log(data);
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     const fetchAllData = async () => {
       try {
         const res = await axios.get("https://dummyjson.com/products");
-
         const products = res.data.products;
 
         setData(products);
 
-        // ✅ GET UNIQUE CATEGORIES
         const uniqueCategories = [
           "ALL",
-          ...new Set(products.map((item) => item.category.toUpperCase())),
+          ...new Set(
+            products.map((item) => item.category?.toUpperCase()).filter(Boolean)
+          ),
+        ];
+
+        const uniqueBrands = [
+          "ALL",
+          ...new Set(
+            products.map((item) => item.brand?.toUpperCase()).filter(Boolean)
+          ),
         ];
 
         setCategories(uniqueCategories);
+        setBrands(uniqueBrands);
       } catch (error) {
         console.log(error);
       }
@@ -32,7 +40,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, categories }}>
+    <DataContext.Provider value={{ data, categories, brands }}>
       {children}
     </DataContext.Provider>
   );

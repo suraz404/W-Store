@@ -9,8 +9,10 @@ const FilterSection = ({
   setPriceRange,
   handleCategoryChange,
   handleResetButton,
+  brand,
+  setBrand,
 }) => {
-  const { categories } = useContext(DataContext);
+  const { categories, brands } = useContext(DataContext);
 
   const uniqueCategories = categories;
   return (
@@ -44,6 +46,20 @@ const FilterSection = ({
 
       <hr className="my-6 text-gray-400" />
 
+      <h1 className="  text-md font-semibold mt-4 ">Brand</h1>
+      <select
+        value={brand}
+        onChange={(e) => setBrand(e.target.value)}
+        className="border p-2 rounded-md w-full mt-2"
+      >
+        {brands.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))}
+      </select>
+      <hr className="my-6 text-gray-400" />
+
       <h1 className="  text-md font-semibold mt-4 ">Price Range</h1>
       <div className="flex flex-col gap-2 mt-2">
         <label className="text-sm" htmlFor="">
@@ -51,8 +67,8 @@ const FilterSection = ({
         </label>
         <input
           type="range"
-          name=""
-          id=""
+          min={0}
+          max={5000}
           value={priceRange[1]}
           onChange={(e) =>
             setPriceRange([priceRange[0], Number(e.target.value)])
