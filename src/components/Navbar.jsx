@@ -10,11 +10,14 @@ import {
 } from "@clerk/clerk-react";
 
 import { CgClose } from "react-icons/cg";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Navbar = ({ location, getlocation, openDropdown, setopenDropdown }) => {
   const handleopenDropdown = () => {
     setopenDropdown(!openDropdown);
   };
+  const { cart } = useContext(CartContext);
   return (
     <div className="bg-white py-3 shadow-2xl">
       <div className=" max-w-6xl mx-auto flex items-center justify-between ">
@@ -107,7 +110,7 @@ const Navbar = ({ location, getlocation, openDropdown, setopenDropdown }) => {
           <Link to={"/cart"} className="relative">
             <IoCartOutline className=" h-6 w-6" />
             <span className="bg-black  text-[10px] px-1 rounded-full text-white absolute -top-1 -right-2 ">
-              0
+              {cart.length}
             </span>
           </Link>
           <SignedOut>
