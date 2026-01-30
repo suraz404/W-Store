@@ -17,7 +17,11 @@ const ProductCard = ({ product }) => {
         className="h-40 object-contain mb-4"
         onClick={() => navigate(`./${product.id}`)}
       />
+<<<<<<< HEAD
 
+=======
+      ``
+>>>>>>> 4ddab64d5d37e4c590dc68235d450ab849be0545
       {/* Product Name */}
       <h2 className="text-md line-clamp-2  font-medium text-gray-900 mb-1">
         {product.title}
