@@ -8,7 +8,7 @@ import ReviewsSection from "../components/ReviewsSection";
 import RecommendedProducts from "../components/RecommendedProducts";
 import { DataContext } from "../context/DataContext";
 
-const SIngleProduct = () => {
+const SingleProduct = () => {
   const { data } = useContext(DataContext);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -135,4 +135,4 @@ const SIngleProduct = () => {
   );
 };
 
-export default SIngleProduct;
+export default SingleProduct;
