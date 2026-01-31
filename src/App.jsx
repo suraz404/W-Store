@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import axios from "axios";
 import Footer from "./components/Footer";
 import SIngleProduct from "./pages/SIngleProduct";
+import CategoryPage from "./components/CategoryPage";
 
 const App = () => {
   const [location, setLocation] = useState("");
@@ -46,6 +47,10 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route
+          path="/category/:categoryName"
+          element={<CategoryPage />}
+        ></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/products" element={<Product />}></Route>

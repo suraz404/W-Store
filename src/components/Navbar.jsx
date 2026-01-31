@@ -17,12 +17,8 @@ const Navbar = ({ location, getlocation, openDropdown, setopenDropdown }) => {
   const handleopenDropdown = () => {
     setopenDropdown(!openDropdown);
   };
-<<<<<<< HEAD
   const { cart = [] } = useContext(CartContext);
 
-=======
-  const { cart } = useContext(CartContext);
->>>>>>> 
   return (
     <div className="bg-white py-3 shadow-2xl">
       <div className=" max-w-6xl mx-auto flex items-center justify-between ">

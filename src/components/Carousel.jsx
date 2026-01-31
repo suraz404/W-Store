@@ -4,10 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Categories from "./Categories";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
->>>>>>> 4ddab64d5d37e4c590dc68235d450ab849be0545
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -61,17 +58,11 @@ const Carousel = () => {
                 </h3>
                 <h1 className="text-4xl font-bold uppercase">{item.title}</h1>
                 <p className="line-clamp-3 pr-7 text-sm">{item.description}</p>
-<<<<<<< HEAD
                 <Link to={`/products/${item.id}`}>
                   <button className="px-4 py-2 bg-gray-500 rounded-xl hover:bg-gray-400">
                     Shop Now
                   </button>
                 </Link>
-=======
-                <button className="px-4 py-2 bg-gray-500 rounded-xl hover:bg-gray-400">
-                  Shop Now
-                </button>
->>>>>>> 4ddab64d5d37e4c590dc68235d450ab849be0545
               </div>
 
               <img

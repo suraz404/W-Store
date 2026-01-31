@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { CartContext } from "./CartContext";
 export const CartProvider = ({ children }) => {
@@ -55,20 +54,6 @@ export const CartProvider = ({ children }) => {
         decreaseQty,
       }}
     >
-=======
-import { CartContext } from "./CartContext";
-import { useState } from "react";
-
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
-  };
-  console.log(cart);
-  return (
-    <CartContext.Provider value={{ cart, setCart, addToCart }}>
->>>>>>> 4ddab64d5d37e4c590dc68235d450ab849be0545
       {children}
     </CartContext.Provider>
   );

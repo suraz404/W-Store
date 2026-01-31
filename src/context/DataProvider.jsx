@@ -10,7 +10,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchAllData = async () => {
       try {
-        const res = await axios.get("https://dummyjson.com/products");
+        const res = await axios.get("https://dummyjson.com/products?limit=200");
         const products = res.data.products;
 
         setData(products);
@@ -18,14 +18,16 @@ export const DataProvider = ({ children }) => {
         const uniqueCategories = [
           "ALL",
           ...new Set(
-            products.map((item) => item.category?.toUpperCase()).filter(Boolean)
+            products
+              .map((item) => item.category?.toUpperCase())
+              .filter(Boolean),
           ),
         ];
 
         const uniqueBrands = [
           "ALL",
           ...new Set(
-            products.map((item) => item.brand?.toUpperCase()).filter(Boolean)
+            products.map((item) => item.brand?.toUpperCase()).filter(Boolean),
           ),
         ];
 

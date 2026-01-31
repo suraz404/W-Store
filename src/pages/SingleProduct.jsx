@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import ProductGallery from "../components/ProductGallery";
 import ProductDetail from "../components/ProductDetail";
@@ -14,6 +14,7 @@ const SIngleProduct = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -97,12 +98,12 @@ const SIngleProduct = () => {
             W-Store
           </Link>
           <span>/</span>
-          <Link
-            to={`/products?category=${product.category}`}
+          <div
+            onClick={() => navigate(`/category/${product.category}`)}
             className="hover:text-black transition"
           >
             {product.category.toUpperCase()}
-          </Link>
+          </div>
           <span>/</span>
           <span className="text-black">{product.title}</span>
         </div>

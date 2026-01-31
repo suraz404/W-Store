@@ -13,7 +13,7 @@ const Product = () => {
   const [priceRange, setPriceRange] = useState([0, 5000]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
 
   const filteredData = data.filter((item) => {
     return (
@@ -30,7 +30,7 @@ const Product = () => {
 
   const paginatedData = filteredData.slice(
     (displayPage - 1) * itemsPerPage,
-    displayPage * itemsPerPage
+    displayPage * itemsPerPage,
   );
 
   const handleCategoryChange = (e) => {
