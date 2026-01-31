@@ -10,7 +10,7 @@ const Categories = () => {
 
   return (
     <div className="mt-8">
-      <h1 className="text-2xl text-center md:text-6xl font-black uppercase tracking-tighter italic ">
+      <h1 className="text-2xl text-black text-center md:text-6xl font-black uppercase tracking-tighter italic ">
         Categories
       </h1>
       <div className="flex justify-center gap-6 mt-11  flex-wrap">
